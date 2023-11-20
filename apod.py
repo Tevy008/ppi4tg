@@ -2,12 +2,13 @@ import requests
 import os
 import argparse
 from urllib.parse import urlparse,unquote
-from downloads import address_and_path
+from downloads import download_images
 from dotenv import load_dotenv
+from pathlib import Path
 
 
-def get_extension_link(link):
-    link_unquote = unquote(link)
+def get_extension_link(url):
+    link_unquote = unquote(url)
     link_parse = urlparse(link_unquote)
     path,full_name = os.path.split(link_parse.path)
     file_extension = os.path.splitext(full_name)
@@ -15,28 +16,28 @@ def get_extension_link(link):
     return extension,file_name
 
 
-def get_image_apport():
-    token = os.environ['TOKEN']
-    url_token = "https://api.nasa.gov/planetary/apod"
-    count = 30
-    params = {"api_key":token,"count":count}
-    response=requests.get(url_token,params=params)
+def get_image_apport(token):
+    apod_url = "https://api.nasa.gov/planetary/apod"
+    number_of_images = 30
+    params = {"api_key":token,"count":number_of_images}
+    response=requests.get(apod_url,params=params)
     response.raise_for_status()
     for image_apod in response.json():
         if image_apod.get("hdurl"):
             apod_link_image=image_apod["hdurl"]
         else:
             apod_link_image=image_apod["url"]
-        print(apod_link_image)
         extension,file_name=get_extension_link(apod_link_image)
         file_path = f"images/{file_name}{extension}"
-        address_and_path(apod_link_image,file_path)
+        download_images(apod_link_image,file_path)
 
 
 def main():
+    token = os.environ['TOKEN']
+    Path("images").mkdir(parents=True, exist_ok=True)
     load_dotenv()
-    get_image_apport()
+    get_image_apport(token)
 
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
     main()

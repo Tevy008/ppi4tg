@@ -1,6 +1,7 @@
 import requests
 from urllib.parse import urlparse,unquote
-from downloads import address_and_path
+from downloads import download_images
+from pathlib import Path
 
 
 def fetch_spacex_last_launch():
@@ -9,11 +10,13 @@ def fetch_spacex_last_launch():
     response.raise_for_status()
     links_image = response.json()["links"]["flickr"]["original"]
     for number,link in enumerate(links_image):
-        address_and_path(link, f"images/{number}.jpg")
+        download_images(link, f"images/{number}.jpg")
 
 
 def main():
+    Path("images").mkdir(parents=True, exist_ok=True)
     fetch_spacex_last_launch()
+    
 
 
 if __name__ == '__main__':

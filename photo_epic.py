@@ -1,12 +1,12 @@
 import requests
 import datetime
-from downloads import address_and_path
+from downloads import download_images
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 
-def get_photo_epic():
-    token = os.environ['TOKEN']
+def get_photo_epic(token):
     url = "https://api.nasa.gov/EPIC/api/natural/image"
     params = {"api_key":token,}
     response=requests.get(url,params=params)
@@ -17,12 +17,14 @@ def get_photo_epic():
         epic_image_date = datetime.datetime.fromisoformat(epic_image_date).strftime('%Y/%m/%d')
         link_path = f"https://api.nasa.gov/EPIC/archive/natural/{epic_image_date}/png/{filename}.png"
         url_path = f"images/{filename}.png"
-        address_and_path(link_path,url_path,params)                            
+        download_images(link_path,url_path,params)                            
 
 
 def main():
+    Path("images").mkdir(parents=True, exist_ok=True)
+    token = os.environ['TOKEN']
     load_dotenv()
-    get_photo_epic()
+    get_photo_epic(token)
 
 
 if __name__ == '__main__':

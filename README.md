@@ -20,14 +20,18 @@ pip install -r requirements.txt
 Для публикации необходимых изображений в телеграм надо написать:
 
 ```
-python main.py
+python publishing_images.py
 ```
+Вместо ```python publishing_images.py``` вы можете написать название любого скрипта например:
+
+```python apod.py```,```python photo_epic.py```,```python spacex.py```
+
+
 
 Что бы загрузить фотографии из конкретного запуска, нужно передать функции `fetch_spacex_last_launch` ID запуска в аргументе --id при запуске скрипта:
 
-
 ```
-python fetch_spacex_last_launch --d launch_id
+python fetch_spacex_last_launch --id launch_id
 ```
 
 

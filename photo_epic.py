@@ -1,6 +1,6 @@
 import requests
 import datetime
-from downloads import download_images
+from downloads import download_image
 import os
 from dotenv import load_dotenv
 from pathlib import Path
@@ -17,7 +17,7 @@ def get_photos_epic(token):
         epic_image_date = datetime.datetime.fromisoformat(epic_image_date).strftime('%Y/%m/%d')
         link_path = f"https://api.nasa.gov/EPIC/archive/natural/{epic_image_date}/png/{filename}.png"
         url_path = f"images/{filename}.png"
-        download_images(link_path,url_path,params)                            
+        download_image(link_path,url_path,params)                            
 
 
 def main():

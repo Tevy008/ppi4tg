@@ -21,9 +21,9 @@ def get_photo_epic(token):
 
 
 def main():
+    load_dotenv()
     Path("images").mkdir(parents=True, exist_ok=True)
     token = os.environ['NASA_TOKEN']
-    load_dotenv()
     get_photo_epic(token)
 
 

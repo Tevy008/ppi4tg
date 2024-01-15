@@ -24,7 +24,7 @@ python publishing_images.py
 ```
 Вместо ```python publishing_images.py``` вы можете написать название любого скрипта например:
 
-```python apod.py```,```python photo_epic.py```,```python spacex.py```
+```python apod.py``` которая выполняет получение картинок от nasa.apod ,```python photo_epic.py``` выполняет получение картинок от nasa.epic,```python spacex.py``` выполняет получение картинок от spacex.
 
 
 

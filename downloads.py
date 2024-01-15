@@ -1,7 +1,7 @@
 import requests
 import os
 
-def images_download(link,path,params=None):
+def image_download(link,path,params=None):
     response = requests.get(link,params)
     response.raise_for_status()
     with open(path, 'wb') as file:

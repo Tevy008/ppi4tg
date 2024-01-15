@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 
-def get_photo_epic(token):
+def get_photos_epic(token):
     url = "https://api.nasa.gov/EPIC/api/natural/image"
     params = {"api_key":token,}
     response=requests.get(url,params=params)
@@ -24,7 +24,7 @@ def main():
     load_dotenv()
     Path("images").mkdir(parents=True, exist_ok=True)
     token = os.environ['NASA_TOKEN']
-    get_photo_epic(token)
+    get_photos_epic(token)
 
 
 if __name__ == '__main__':

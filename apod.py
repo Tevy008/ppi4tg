@@ -2,7 +2,7 @@ import requests
 import os
 import argparse
 from urllib.parse import urlparse,unquote
-from downloads import download_images
+from downloads import download_image
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -29,7 +29,7 @@ def get_images_apport(token):
             apod_link_image=image_apod["url"]
         extension,file_name=get_extension_link(apod_link_image)
         file_path = f"images/{file_name}{extension}"
-        download_images(apod_link_image,file_path)
+        download_image(apod_link_image,file_path)
 
 
 def main():

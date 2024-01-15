@@ -33,9 +33,9 @@ def get_image_apport(token):
 
 
 def main():
+    load_dotenv()
     token = os.environ['NASA_TOKEN']
     Path("images").mkdir(parents=True, exist_ok=True)
-    load_dotenv()
     get_image_apport(token)
 
 

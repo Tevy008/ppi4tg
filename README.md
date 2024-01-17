@@ -46,7 +46,7 @@ python fetch_spacex_last_launch --id launch_id
 
 
 ```
-TELEGRAM_TOKEN = "5788916237:AAHicMFBprogmamrnuO9NEzxccnqxzNbaOAZosEQ"
+TOKEN_TG = "5788916237:AAHicMFBprogmamrnuO9NEzxccnqxzNbaOAZosEQ"
 TG_CHAT_ID = "@chat_id"
 NASA_TOKEN = "BgZgSaaTYasRR33LH23rozfNduN5Pp1hynSA8316AAs"
 ```

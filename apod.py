@@ -18,8 +18,8 @@ def get_extension_link(url):
 
 def get_images_apod(token):
     apod_url = "https://api.nasa.gov/planetary/apod"
-    number_of_images = 30
-    params = {"api_key":token,"count":number_of_images}
+    images_number = 30
+    params = {"api_key":token,"count":images_number}
     response=requests.get(apod_url,params=params)
     response.raise_for_status()
     for image_apod in response.json():

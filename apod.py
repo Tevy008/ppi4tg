@@ -16,7 +16,7 @@ def get_extension_link(url):
     return extension,file_name
 
 
-def get_images_apport(token):
+def get_images_apod(token):
     apod_url = "https://api.nasa.gov/planetary/apod"
     number_of_images = 30
     params = {"api_key":token,"count":number_of_images}
@@ -36,7 +36,7 @@ def main():
     load_dotenv()
     token = os.environ['NASA_TOKEN']
     Path("images").mkdir(parents=True, exist_ok=True)
-    get_images_apport(token)
+    get_images_apod(token)
 
 
 if __name__ == '__main__':
